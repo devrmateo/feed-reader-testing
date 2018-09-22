@@ -56,13 +56,14 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
+        const body = document.querySelector('body');
+        const menuIcon = document.querySelector('.menu-icon-link');
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function() {
-            const body = document.querySelector('body');
             expect(body.classList.value).toBe('menu-hidden');
         });
 
@@ -72,8 +73,6 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
           it('changes visibility when clicked', function() {
-            const menuIcon = document.querySelector('.menu-icon-link');
-            const body = document.querySelector('body');
             menuIcon.click();
             expect(body.classList.value).toBe('');
             menuIcon.click();
@@ -85,6 +84,7 @@ $(function() {
     describe('Initial Entries', function() {
         const feed = document.querySelector('.feed');
 
+        //Pass the 'done' parameter to the beforeEach function, so that Jasmine knows that the loadFeed function has completed, and to run its tests.
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
@@ -107,6 +107,7 @@ $(function() {
     describe('New Feed Selection', function() {
         const feeds = document.querySelector('.feed').children;
 
+        //Pass the 'done' parameter to the beforeEach function, so that Jasmine knows that the loadFeed function has completed, and to run its tests.
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
@@ -119,6 +120,6 @@ $(function() {
          it('feed content changes', function(done) {
             expect(feeds[0].innerText).not.toEqual(feeds[1].innerText);
             done();
-         })
+         });
     });
 }());
