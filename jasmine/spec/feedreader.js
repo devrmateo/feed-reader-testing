@@ -98,7 +98,8 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          it('feed has at least one entry', function(done) {
-            expect(feed.children.length).toBeGreaterThan(0);
+            expect(feed.hasChildNodes);
+            expect(feed.firstElementChild.classList.value).toBe('entry-link');
             done();
          });
     });
