@@ -107,11 +107,18 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
         const feeds = document.querySelector('.feed').children;
+        let prevFeedData, newFeedData;
 
         //Pass the 'done' parameter to the beforeEach function, so that Jasmine knows that the loadFeed function has completed, and to run its tests.
         beforeEach(function(done) {
             loadFeed(0, function() {
+                //Feed 0 done loading.
+                prevFeedData = feeds[0].innerHTML;
+             loadFeed(1, function() {
+                //Feed 1 done loading.
+                newFeedData = feeds[1].innerHTML;
                 done();
+                });
             });
         });
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -119,7 +126,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
          it('feed content changes', function(done) {
-            expect(feeds[0].innerText).not.toEqual(feeds[1].innerText);
+            expect(prevFeedData).not.toEqual(newFeedData);
             done();
          });
     });
