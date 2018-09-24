@@ -82,8 +82,6 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
-        const feed = document.querySelector('.feed');
-
         //Pass the 'done' parameter to the beforeEach function, so that Jasmine knows that the loadFeed function has completed, and to run its tests.
         beforeEach(function(done) {
             loadFeed(0, function() {
@@ -98,8 +96,8 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          it('feed has at least one entry', function(done) {
-            expect(feed.hasChildNodes);
-            expect(feed.firstElementChild.classList.value).toBe('entry-link');
+            const entries = document.querySelectorAll('.feed .entry');
+            expect(entries.length).toBeGreaterThan(0);
             done();
          });
     });
